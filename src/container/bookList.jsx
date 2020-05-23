@@ -39,11 +39,8 @@ class BookList extends React.Component {
 
   navigateBookDetails = (isbn) => {
     let currentPath = this.props.history.location.pathname;
-    // console.log("Book list nagiate", this.props);
-    // console.log("onClick book list", isbn);
-    // console.log(`push to path ${currentPath}/${isbn}`);
+
     // book details to be sent out with history props
-    //
     let bookDetail = this.state.books.filter((book) => book.isbn === isbn);
     console.log(" book to be sent ", bookDetail[0]);
 
