@@ -30,7 +30,7 @@ class Home extends React.Component {
     console.log(this.props);
     return (
       <div>
-        <h1> Home Component </h1>
+        <h1> Home Page</h1>
         <div className="categoryContainer">
           {this.state.categories.map((category) => {
             return (
