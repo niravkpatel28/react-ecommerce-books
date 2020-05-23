@@ -3,17 +3,22 @@
 
 import React from "react";
 import "./bookCard.style.css";
-const BookCard = ({ book }) => {
-  console.log("sent book ", book);
+const BookCard = ({ book, onClick }) => {
+  // console.log("sent book ", book);
   return (
-    <div className="bookCard">
+    <div
+      className="bookCard"
+      onClickCapture={() => {
+        onClick(book.isbn);
+      }}
+    >
       <h4> {book.title} </h4>
 
       <img className="bookImage" src={book.thumbnailUrl} alt="thumbnail" />
       <div className="authors">
         {" "}
         {book.authors.map((author) => (
-          <p>{author} </p>
+          <p key={author}>{author} </p>
         ))}{" "}
       </div>
     </div>

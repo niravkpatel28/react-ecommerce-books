@@ -4,6 +4,7 @@
 // the component will have to fetch all books within the given category
 // ideally category based api call will be implemented in the back end server.
 // since we are using json file we will use filter method on the data array
+// this state contains list of books pertaining to a category
 import React from "react";
 import axios from "axios";
 import { booksUrl } from "../api/apiRoutes";
@@ -36,13 +37,37 @@ class BookList extends React.Component {
     });
   };
 
+  navigateBookDetails = (isbn) => {
+    let currentPath = this.props.history.location.pathname;
+    // console.log("Book list nagiate", this.props);
+    // console.log("onClick book list", isbn);
+    // console.log(`push to path ${currentPath}/${isbn}`);
+    // book details to be sent out with history props
+    //
+    let bookDetail = this.state.books.filter((book) => book.isbn === isbn);
+    console.log(" book to be sent ", bookDetail[0]);
+
+    //attach book details to history props
+
+    this.props.history.push({
+      pathname: `${currentPath}/${isbn}`,
+      state: { book: bookDetail[0] },
+    });
+    // this.props.history.push(`${currentPath}/${isbn}`);
+  };
   render() {
     return (
       <div className="bookContainer">
         <h1> Book list for category </h1>
         <div className="allBooks">
           {this.state.books.map((book) => {
-            return <BookCard book={book} key={book.isbn} />;
+            return (
+              <BookCard
+                book={book}
+                key={book.isbn}
+                onClick={this.navigateBookDetails}
+              />
+            );
           })}
         </div>
       </div>
