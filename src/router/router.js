@@ -6,7 +6,7 @@ const Router = (props) => {
   console.log("router props ", props);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/category/:categoryId" component={BookList} />
