@@ -10,7 +10,12 @@ const Header = () => {
       <Link to="/">
         {" "}
         {/* <img src="./npWhite.png" alt="company logo" className="companyLogo" /> */}
-        <img src="./npBlack.png" alt="company logo" className="companyLogo" />
+        {/*  the following code enables loading image from the public folder  */}
+        <img
+          src={process.env.PUBLIC_URL + "/npBlack.png"}
+          alt="company logo"
+          className="companyLogo"
+        />
       </Link>
       <h1> Book Valley</h1>
       <nav>
